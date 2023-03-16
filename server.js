@@ -1,13 +1,18 @@
+//Imports
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
+const dotenv = require('dotenv').config();
+const bcrypt = require('bcrypt');
 
+//Configuring sequelize connection
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+//Instance of express application
 const app = express();
 const PORT = process.env.PORT || 3001;
 
