@@ -5,7 +5,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const dotenv = require('dotenv').config();
+
 const bcrypt = require('bcrypt');
 
 //Configuring sequelize connection
