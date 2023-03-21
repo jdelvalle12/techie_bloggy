@@ -12,5 +12,26 @@
     "nodemon": "^2.0.20",
     "sequelize": "^6.28.0",
     "test": "^3.3.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: not test specified\" && exit 1",
+    "watch": "nodemon server.js",
+    "seed": "node seeds/seed.js"
+  },
+  "name": "bloggy",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdelvalle12/Bloggy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdelvalle12/Bloggy/issues"
+  },
+  "homepage": "https://github.com/jdelvalle12/Bloggy#readme"
 }
