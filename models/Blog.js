@@ -12,7 +12,7 @@ Blog.init(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     content: {
