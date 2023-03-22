@@ -1,48 +1,76 @@
 const newFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const name = document.querySelector('#project-name').value.trim();
-    const needed_funding = document.querySelector('#project-funding').value.trim();
-    const description = document.querySelector('#project-desc').value.trim();
-  
-    if (name && needed_funding && description) {
-      const response = await fetch(`/api/projects`, {
-        method: 'POST',
-        body: JSON.stringify({ name, needed_funding, description }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to create project');
-      }
+  event.preventDefault();
+
+  const title = document.querySelector('#blog-title').value.trim();
+  const content = document.querySelector('#blog-content').value.trim();
+  const date_created = new Date();
+  const user = 'current_user'; // You will need to replace this with your actual user authentication implementation
+
+  if (title && content) {
+    const response = await fetch('/api/blog', {
+      method: 'POST',
+      body: JSON.stringify({ title, content, date_created, user }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert('Failed to create blog');
     }
-  };
-  
-  const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
-      const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`/api/projects/${id}`, {
-        method: 'DELETE',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert('Failed to delete project');
-      }
+  }
+};
+
+const commentFormHandler = async (event) => {
+  event.preventDefault();
+
+  const comment_text = document.querySelector('#comment-text').value.trim();
+  const blog_id = document.querySelector('#blog-id').value.trim();
+  const date_created = new Date();
+  const user = 'current_user';
+
+  if (comment_text) {
+    const response = await fetch(`/api/blog/${id}`, {
+      method: 'POST',
+      BODY: json.stringify({ comment_text, date_created, user}),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert('Failed to create comment');
     }
-  };
+  }
+};
+
+document.querySelector('.comment-form')
+.addEventListener('submit', commentFormHandler);
+
+const delButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/blog/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert('Failed to delete blog');
+    }
+  }
+};
+
+document
+  .querySelector('.new-blog-form')
+  .addEventListener('submit', newFormHandler);
   
   document
-    .querySelector('.new-project-form')
-    .addEventListener('submit', newFormHandler);
-  
-  document
-    .querySelector('.project-list')
+    .querySelector('.blog-list')
     .addEventListener('click', delButtonHandler);
-  

@@ -1,14 +1,37 @@
 <div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <h2>{{title}}</h2>
+  <p>{{content}}</p>
+  <p>Created by {{name}} on {{format_date date_created}}</p>
   <p>
     <span for="img" aria-label="notes"></span>
-    <span class="dollar-amount">{{format_blog}}</span>
+    <span class="blog-format">{{format_blog}}</span>
     
   </p>
   <p>
-    <button class="btn btn-primary">The Tech Blog</button>
+    <button class="btn btn-primary">Techie Bloggy</button>
   </p>
+</div>
+<div class="comments-section">
+  <h3>Comments</h3>
+  {{#if comments}}
+    <ul class="comments-list">
+      {{#each comments}}
+        <li>
+          <p>{{comment_text}}</p>
+          <p>Comment by {{username}} on {{format_date date_created}}</p>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No comments yet.</p>
+  {{/if}}
+  {{#if logged_in}}
+    <form id="comment-form">
+      <div class="form-group">
+        <label for="comment-text">Leave a comment:</label>
+        <textarea class="form-control" rows="3" id="comment-text" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{/if}}
 </div>

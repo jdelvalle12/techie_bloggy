@@ -3,30 +3,35 @@
       "title": "Why MVC is so important",
       "content": "MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View later, for design, and the Controller layer for application logic.",
       "name":"Xandromus",
-      "date_created": ""
+      "date_created": "5/8/2020",
+      "comments": ""
     },
     {
       "title": "Authoentication vs. Authorization",
       "content": "There is a difference between authentication and authorization. Authentication means confirming your own identity, whereas authorization means being allowed access to the system.",
       "name":"Xandromus",
-      "date_created": ""
+      "date_created": "5/8/2020",
+      "comments": ""
     },
     {
       "title": "Object-Relational Mapping",
       "content": "I have really loved learning ORMs. It's really simplified the way I create queries in SQL!",
       "name":"Lernantino",
-      "date_created": ""
+      "date_created": "5/8/2020",
+      "comments": ""
     },
     {
       "title": "Session Storage",
       "content": "Session storage can be thought about a lot like local storage, with one exception. Instead of sa v ing on your local hard drive it is saved in your browser and cleared when a tab is closed.",
       "name":"jdelvalle",
-      "date_created": ""
+      "date_created": "3/20/2023",
+      "comments": ""
     },
     {
       "title": "Handlebars",
       "content": "Handlebars is a simple templating language. It uses a template and an input object to generate HTML or other text formats. Handlebars templates look like regular text with embedded Handlebars expressions. A handlebars expression is a {{, some contents, followed by a }}. When the template is executed, these expressions are replaced with values from an input object.",
       "name":"jdelvalle",
-      "date_created": ""
+      "date_created": "3/20/2023",
+      "comments": ""
     }
   ]
