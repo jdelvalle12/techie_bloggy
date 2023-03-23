@@ -27,7 +27,7 @@ Blog.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    comments: {
+    comment: {
       type: DataTypes.STRING,
       allowNull: false
     },
