@@ -16,9 +16,9 @@ Blog.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -27,10 +27,14 @@ Blog.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    comment: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+    // comment_id: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'comment',
+    //     key: 'id'
+    //   }
+    // },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
