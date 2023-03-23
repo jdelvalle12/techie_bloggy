@@ -4,8 +4,5 @@ module.exports = {
       const date = new Date(dateStr);
       return date.toLocaleDateString();
     },
-    format_time: (date) => {
-      return time = date.toLocaleDateString('en-US');
-    },
   };
   

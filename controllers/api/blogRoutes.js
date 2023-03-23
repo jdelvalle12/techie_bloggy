@@ -75,7 +75,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!blogData) {
-      res.status(404).json({ message: 'No Blog found with this id!' });
+      res.status(404).json({ message: 'Blog post deleted successfully!' });
       return;
     }
 
