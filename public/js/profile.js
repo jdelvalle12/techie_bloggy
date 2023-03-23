@@ -32,9 +32,9 @@ const commentFormHandler = async (event) => {
   const user = 'current_user';
 
   if (comment_text) {
-    const response = await fetch(`/api/blog/${id}`, {
+    const response = await fetch(`/api/blog/${blog_id}`, {
       method: 'POST',
-      BODY: json.stringify({ comment_text, date_created, user}),
+      body: JSON.stringify({ comment_text, date_created, user}),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -48,7 +48,7 @@ const commentFormHandler = async (event) => {
   }
 };
 
-document.querySelector('.comment-form')
+document.querySelector('#comment-form')
 .addEventListener('submit', commentFormHandler);
 
 const delButtonHandler = async (event) => {
