@@ -16,6 +16,9 @@
         <span role="img" aria-label="notes"></span>
         <a href="/">Techie Bloggy</a>
       </h1>
+      <h4>
+        <span>A blog site to talk about tech</span>
+      </h4>
       <nav>
         <a href="/">Home</a>
         <a href="/blog">Blogs</a>
@@ -41,7 +44,7 @@
             <div class="card-body">
               <ul class="list-unstyled mt-3 mb-4">
                 <li>{{content}}</li>
-                <li>Post by {{username}} on {{date_created}}</li>
+                <li>Post by {{username}} on {{format_date date_created}}</li>
                 <li>Comments:</li>
               <ul>
                 {{#each Comments}}
