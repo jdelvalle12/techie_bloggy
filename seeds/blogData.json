@@ -22,7 +22,7 @@
     },
     {
       "title": "Session Storage",
-      "content": "Session storage can be thought about a lot like local storage, with one exception. Instead of sa v ing on your local hard drive it is saved in your browser and cleared when a tab is closed.",
+      "content": "Session storage can be thought about a lot like local storage, with one exception. Instead of saving on your local hard drive it is saved in your browser and cleared when a tab is closed.",
       "username":"jdelvalle",
       "date_created": "3/20/2023",
       "comment_text": ""

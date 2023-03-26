@@ -1,21 +1,100 @@
-header, .blog:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .no-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    color: #1b89bc;
-    text-decoration: none;
-    font-size: 100%;
-  }
-  
-  .no-button:hover {
-    color: #065b83;
-    text-decoration: underline;
-  }
+/* Set background color for the body */
+body {
+  background-color: #f2f2f2;
+}
+
+/* Style the header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+}
+
+/* Style the logo */
+header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+/* Style the navigation links */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+/* Style the active navigation link */
+nav a.active {
+  font-weight: bold;
+}
+
+/* Style the main content area */
+main {
+  padding: 1em;
+}
+
+/* Style the blog post title */
+.blogs h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+/* Style the blog post date */
+.blogs p {
+  font-size: 0.9em;
+  color: #777;
+}
+
+/* Style the blog post content */
+.blogs p {
+  line-height: 1.5;
+}
+
+/* Style the comment form */
+.add-comment-form {
+  margin-top: 2em;
+}
+
+.add-comment-form textarea {
+  width: 100%;
+}
+
+.add-comment-form button[type=submit] {
+  margin-top: 1em;
+}
+
+/* Style the blog list */
+.blogs .row {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+
+/* Style the add blog form */
+.add-blog-form {
+  margin-top: 2em;
+}
+
+.add-blog-form label {
+  font-size: 1.2em;
+}
+
+.add-blog-form input[type=text],
+.add-blog-form textarea {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.add-blog-form button[type=submit] {
+  margin-top: 1em;
+}
+
+/* Style the footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  margin-top: 2em;
+}
   
 
-  

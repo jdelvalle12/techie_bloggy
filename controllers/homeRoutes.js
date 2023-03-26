@@ -38,7 +38,83 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/blog/:id', async (req, res) => {
+router.get('/blogs', async (req, res) => {
+  try {
+
+const blogData = await Blog.findAll({
+  attributes: ['id', 'title', 'content', 'date_created'],
+  include: [
+    {
+      model: User,
+      attributes: ['username'],
+    },
+    {
+      model: Comment,
+      attributes: ['comment_text', 'date_created'],
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    },
+  ],
+  where: {
+    user_id: req.session.user_id,
+  },
+});
+// Serialize data so the template can read it
+const allBlogs = blogData.map((blog) => blog.get({ plain: true }));
+
+// Pass serialized data and session flag into template
+res.render('blog', { 
+  allBlogs, 
+  logged_in: req.session.logged_in 
+  });
+} catch (err) {
+res.status(500).json(err);
+}
+});
+
+router.get('/blogs/:id', async (req, res) => {
+  try {
+
+const blogData = await Blog.findAll({
+  attributes: ['id', 'title', 'username', 'content', 'date_created'],
+  include: [
+    {
+      model: User,
+      attributes: ['username'],
+    },
+    {
+      model: Comment,
+      attributes: ['comment_text', 'date_created'],
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+    },
+  ],
+  where: {
+    user_id: req.session.user_id,
+  },
+});
+// Serialize data so the template can read it
+const allBlogs = blogData.map((blog) => blog.get({ plain: true }));
+
+// Pass serialized data and session flag into template
+res.render('blog', { 
+  allBlogs, 
+  logged_in: req.session.logged_in 
+  });
+} catch (err) {
+res.status(500).json(err);
+}
+});
+
+router.get('/blogs/:id/comments', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [

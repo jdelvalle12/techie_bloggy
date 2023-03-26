@@ -21,7 +21,7 @@
       </h4>
       <nav>
         <a href="/">Home</a>
-        <a href="/blog">Blogs</a>
+        <a href="/blogs">Blogs</a>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">Profile</a> |
@@ -31,42 +31,21 @@
         {{/if}}
       </nav>
     </header>
-<main class="container container-fluid mt-5">
+    <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
-  {{{ body }}}
-    <div class="card">
-      {{#each allBlogs}}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-              <h3 class="my-0 font-weight-normal">{{title}}</h3>
-            </div>
-            <div class="card-body">
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>{{content}}</li>
-                <li>Post by {{username}} on {{format_date date_created}}</li>
-                <li>Comments:</li>
-              <ul>
-                {{#each Comments}}
-                  <li>{{username}} - {{date_created}}</li>
-                {{/each}}
-              </ul>
-              </ul>
-            </div>
-          </div>
-        </div>
-      {{/each}}
-    </div>  
-</main>
-    <footer>
-      
+      {{{ body }}}
+        
+    </main>
+    <footer class="bg-dark text-white p-2 text-center">
+      <p>Copyright © 2023 Techie Bloggy.
+
+      </p>
     </footer>
-</div>
-
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+  </div>
 </body>
+</html>    
 
-</html>
+<!-- Render script for logged in users only -->
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{/if}}

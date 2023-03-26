@@ -1,19 +1,83 @@
-<!-- Loop over each object in the projects array -->
-{{#each blogs as |blog| }}
-<div class="row mb-4 blogs">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      
-      <a href="/blog/{{blog.id}}">{{blog.name}}</a>
-    </h2>
-   
-    <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+      <!-- Render blog posts on homepage -->
+      <main>
+      {{#if homepage}}
+      {{#each allBlogs as |blog|}}
+      <div class="row mb-4 blogs">
+        <div class="col-md-5">
+          <h2>
+            <a href="/blogs/{{blog.id}}">{{blog.title}}</a>
+          </h2>
+          <p>Created by {{blog.username}} on {{format_date blog.date_created}}</p>
+        </div>
+        <div class="col-md-7">
+          <p>{{blog.content}}</p>
+          {{#if blog.Comment.length}}
+          <h4>Comments:</h4>
+          {{#each blog.Comments as |comment|}}
+          <div class="row mb-2">
+            <div class="col-md-5">
+              <p><strong>{{comment.username}}</strong></p>
+              <p>{{comment.comment_text}}</p>
+            </div>
+            <div class="col-md-7">
+              <p>{{format_date comment.date_created}}</p>
+            </div>
+          </div>
+          {{/each}}
+          {{/if}}
+          <form class="add-comment-form" method="POST" action="/blogs/{{blog.id}}/comments">
+            <input type="hidden" name="post_id" value="{{blog.id}}">
+            <div class="form-group">
+              <textarea class="form-control" id="comment-text" rows="3" name="comment_text" placeholder="Add a comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      {{/each}}
+      {{/if}}   
+      <!-- Render blogs with existing posts and option to add new post -->
+      {{#if allBlogs}}
+      <h2>Blogs</h2>
+      <div class="row mb-4 blogs">
+        <div class="col-md-12">
+          <h4>Existing Posts:</h4>
+          {{#each allBlogs as |blog|}}
+          <div class="row mb-2">
+            <div class="col-md-5">
+              <h5>
+                <a href="/blogs/{{blog.id}}">{{blog.title}}</a>
+              </h5>
+              <p>Created by {{blog.username}} on {{format_date blog.date_created}}</p>
+            </div>
+            <div class="col-md-7">
+              <p>{{blog.content}}</p>
+              {{!-- <a href="/blogs/{{blog.id}}/edit" class="btn btn-primary">Edit</a> --}}
+              {{!-- <form class="delete-blog-form" method="POST" action="/blogs/{{blog.id}}?_method=DELETE">
+                <button class="btn btn-danger" type="submit">Delete</button>
+              </form> --}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{!-- <div class="row">
+        <div class="col-md-12">
+          <h4>Add New Post:</h4>
+          <form class="add-blog-form" method="POST" action="/blogs">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea class="form-control" id="content" rows="3" name="content" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div> --}}
+      {{/if}}
+    </main>
+    
   </div>
-  <div class="col-md-7">
-    <p>
-      {{blog.content}}
-    </p>
-  </div>
-</div>
-{{/each}}

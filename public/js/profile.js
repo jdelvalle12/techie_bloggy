@@ -7,7 +7,7 @@ const newFormHandler = async (event) => {
   const user = 'current_user'; // You will need to replace this with your actual user authentication implementation
 
   if (title && content) {
-    const response = await fetch('/api/blog', {
+    const response = await fetch('/api/blogs', {
       method: 'POST',
       body: JSON.stringify({ title, content, date_created, user }),
       headers: {
@@ -32,7 +32,7 @@ const commentFormHandler = async (event) => {
   const user = 'current_user';
 
   if (comment_text) {
-    const response = await fetch(`/api/blog/${blog_id}`, {
+    const response = await fetch(`/api/blogs/${blog_id}`, {
       method: 'POST',
       body: JSON.stringify({ comment_text, date_created, user}),
       headers: {
