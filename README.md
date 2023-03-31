@@ -1,1 +1,1 @@
-# Bloggy
+# Techie Bloggy
