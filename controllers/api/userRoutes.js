@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
@@ -10,7 +10,7 @@ router.post('/', withAuth, async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;      
 
-      // res.status(200).json(userData);
+      res.status(200).json(userData);
     });
   } catch (err) {
     res.status(400).json(err);
@@ -28,15 +28,7 @@ router.post('/login', withAuth, async (req, res) => {
       return;
     }
 
-    const validPassword = await new Promise((resolve, reject) => {
-      userData.checkPassword(req.body.password, (err, result) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
-      });
-    });
+    const validPassword = await userData.checkPassword(req.body.password); 
 
     if (!validPassword) {
       res
@@ -57,7 +49,7 @@ router.post('/login', withAuth, async (req, res) => {
   }
 });
 
-router.post('/logout', withAuth, (req, res) => {
+router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
